@@ -1,6 +1,6 @@
 #  Capstone Requirements
 
-App Functionality: App was used to get places of interest using a natural language search using MapKit. The app has two Tabs: Itinerary List and MapView. The MapView is currently hardcoded to Cupertino, California but was suppose to change based off the user's city input. The Map has the option to look around view, open apple maps with the selected place, get directions and also add to the Itinerary list(not completed yet).
+App Functionality: App was used to get places of interest using a natural language search using MapKit. The app has two Tabs: Itinerary List and MapView. The MapView is currently hard coded to Cupertino, California but was suppose to change based off the user's city input. The Map has the option to look around view, open apple maps with the selected place, get directions and also add to the Itinerary list(only adding to cupertino works). Also feature to delete items has not been implemented.
 
 1. Used Xcode 15.3 and minimum deployment is iOS 17.4
 2. App has readME file. 

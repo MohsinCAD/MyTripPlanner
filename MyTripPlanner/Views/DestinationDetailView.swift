@@ -48,13 +48,22 @@ struct DestinationDetailView: View {
             Text("End Date: \(destination.endDate, formatter: dateFormatter)")
             Text("Travel days: \(daysBetween(startDate: destination.startDate, endDate: destination.endDate))")
         
-                List {
-                    
+            List {
+                Text("Your Saved Places")
+                    .font(.largeTitle)
+                
+                if destination.city == "Cupertino" {
                     ForEach(places, id: \.self) { place in
+                    Group {
+                        
                         Text(place.name)
-                        Text(place.title)
+                            .font(.title3)
+                        Text("Address:  \(place.title)")
+                            .font(.subheadline)
+                        
                     }
-                   
+                }
+            }
                 }
                
         

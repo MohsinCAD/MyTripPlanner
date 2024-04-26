@@ -169,6 +169,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 421544752BD664D3009E396D /* Build configuration list for PBXNativeTarget "MyTripPlanner" */;
 			buildPhases = (
+				4299A6DA2BDC1831007C3FBC /* ShellScript */,
 				421544632BD664D1009E396D /* Sources */,
 				421544642BD664D1009E396D /* Frameworks */,
 				421544652BD664D1009E396D /* Resources */,
@@ -186,6 +187,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 421544912BDA0844009E396D /* Build configuration list for PBXNativeTarget "MyTripPlannerTests" */;
 			buildPhases = (
+				4299A6D92BDC16DD007C3FBC /* ShellScript */,
 				421544872BDA0844009E396D /* Sources */,
 				421544882BDA0844009E396D /* Frameworks */,
 				421544892BDA0844009E396D /* Resources */,
@@ -256,6 +258,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4299A6D92BDC16DD007C3FBC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi \n";
+		};
+		4299A6DA2BDC1831007C3FBC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [[ “$(uname -m)” == arm64 ]]; then\n  export PATH=”/opt/homebrew/bin:$PATH”\nfi\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		421544632BD664D1009E396D /* Sources */ = {

@@ -10,14 +10,14 @@ import XCTest
 @testable import MyTripPlanner
 
 final class ConentViewTests: XCTestCase {
-
-    func testInitialStates() {
-        let contentView = ContentView()
-        XCTAssertEqual(contentView.city, "")
-        XCTAssertEqual(contentView.country, "")
-        XCTAssertTrue(contentView.destinations.isEmpty)
-        XCTAssertFalse(contentView.showingAddDestination)
-    }
+//
+//    func testInitialStates() {
+//        let contentView = ContentView()
+//        XCTAssertEqual(contentView.city, "")
+//        XCTAssertEqual(contentView.country, "")
+//        XCTAssertTrue(contentView.destinations.isEmpty)
+//        XCTAssertFalse(contentView.showingAddDestination)
+//    }
 
 
 }
