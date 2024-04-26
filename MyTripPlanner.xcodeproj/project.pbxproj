@@ -23,6 +23,8 @@
 		4299A6CC2BDAE0DD007C3FBC /* onBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299A6CB2BDAE0DD007C3FBC /* onBoardingView.swift */; };
 		4299A6CE2BDAE20F007C3FBC /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299A6CD2BDAE20F007C3FBC /* LaunchScreenView.swift */; };
 		4299A6D02BDB3BE7007C3FBC /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299A6CF2BDB3BE7007C3FBC /* PlaceModel.swift */; };
+		4299A6D52BDBC84D007C3FBC /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299A6D42BDBC84D007C3FBC /* DestinationDetailView.swift */; };
+		4299A6D72BDBCB55007C3FBC /* PexelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299A6D62BDBCB55007C3FBC /* PexelsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 		4299A6CB2BDAE0DD007C3FBC /* onBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingView.swift; sourceTree = "<group>"; };
 		4299A6CD2BDAE20F007C3FBC /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		4299A6CF2BDB3BE7007C3FBC /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		4299A6D42BDBC84D007C3FBC /* DestinationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
+		4299A6D62BDBCB55007C3FBC /* PexelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsService.swift; sourceTree = "<group>"; };
+		4299A6D82BDBD245007C3FBC /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				4215446A2BD664D1009E396D /* MyTripPlannerApp.swift */,
+				4299A6D82BDBD245007C3FBC /* Readme.md */,
 				4299A6D22BDB8FE6007C3FBC /* Models */,
 				4299A6D32BDB8FF7007C3FBC /* ViewModel */,
 				4299A6D12BDB8FDE007C3FBC /* Views */,
@@ -128,10 +134,12 @@
 			children = (
 				4299A6CD2BDAE20F007C3FBC /* LaunchScreenView.swift */,
 				421544802BD9A861009E396D /* MapKitView.swift */,
+				421544822BDA0195009E396D /* LocationDetailsView.swift */,
 				4215447E2BD667CF009E396D /* ItineraryListView.swift */,
 				4215446C2BD664D1009E396D /* ContentView.swift */,
 				4299A6CB2BDAE0DD007C3FBC /* onBoardingView.swift */,
 				421544B22BDAD2B5009E396D /* NewUserView.swift */,
+				4299A6D42BDBC84D007C3FBC /* DestinationDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				4215447A2BD665EB009E396D /* LocationLookup.swift */,
-				421544822BDA0195009E396D /* LocationDetailsView.swift */,
+				4299A6D62BDBCB55007C3FBC /* PexelsService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -259,7 +267,9 @@
 				421544832BDA0195009E396D /* LocationDetailsView.swift in Sources */,
 				4299A6CC2BDAE0DD007C3FBC /* onBoardingView.swift in Sources */,
 				4215446B2BD664D1009E396D /* MyTripPlannerApp.swift in Sources */,
+				4299A6D72BDBCB55007C3FBC /* PexelsService.swift in Sources */,
 				4215447D2BD66725009E396D /* MapView.swift in Sources */,
+				4299A6D52BDBC84D007C3FBC /* DestinationDetailView.swift in Sources */,
 				4215447B2BD665EB009E396D /* LocationLookup.swift in Sources */,
 				4215447F2BD667CF009E396D /* ItineraryListView.swift in Sources */,
 				4299A6CE2BDAE20F007C3FBC /* LaunchScreenView.swift in Sources */,

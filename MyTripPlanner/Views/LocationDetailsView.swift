@@ -81,7 +81,7 @@ struct LocationDetailsView: View {
                 }
                 // .buttonStyle(PlainButtonStyle())
                 Button {
-                    let newPlace = Place(name: mapSelection?.placemark.name ?? "", title: mapSelection?.placemark.title ?? "")
+                    let newPlace = Place(name: mapSelection?.placemark.name ?? "", title: mapSelection?.placemark.title ?? "", city: "Cupertino")
                     places.append(newPlace)
                     context.insert(newPlace)
                     showingAlert = true
@@ -93,7 +93,7 @@ struct LocationDetailsView: View {
                         .background(.purple)
                         .cornerRadius(12)
                 }
-                .alert("Place has been saved to list.", isPresented: $showingAlert) {
+                .alert("Place has been saved to your list.", isPresented: $showingAlert) {
                     Button("OK", role: .cancel) { }
                     
                     

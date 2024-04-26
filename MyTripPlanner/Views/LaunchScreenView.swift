@@ -2,11 +2,6 @@ import SceneKit
 import SwiftUI
 import UIKit
 
-
-
-
-
-
 struct LaunchScreenView: UIViewRepresentable {
     
     func updateUIView(_ uiView: SCNView, context: Context) {
@@ -46,22 +41,9 @@ struct LaunchScreenView: UIViewRepresentable {
         rotation.duration = 60
         rotation.repeatCount = Float.infinity
         earthNode.addAnimation(rotation, forKey: "rotate the earth")
-        
-        
-      //  addSkybox(to: scene)
-        
+       
         return scene
     }
     
-//    func addSkybox(to scene: SCNScene) {
-//        scene.background.contents = [
-//            "skybox1.jpg",
-//            "skybox2.jpg",
-//            "skybox3.jpg",
-//            "skybox4.jpg",
-//            "skybox5.jpg",
-//            "skybox6.jpg"
-//        ]
-//    }
 }
 

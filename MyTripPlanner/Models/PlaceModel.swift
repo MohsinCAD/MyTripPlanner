@@ -13,10 +13,12 @@ import SwiftData
 class Place {
     var name: String
     var title: String
+    var city: String
     
-    init(name: String, title: String) {
+    init(name: String, title: String, city: String) {
         self.name = name
         self.title = title
+        self.city = city
     }
     
 }

@@ -14,13 +14,14 @@ struct ItineraryListView: View {
                     .foregroundColor(.gray)
             } else {
                 ForEach(destinations, id: \.self) { destination in
-                    VStack(alignment: .leading) {
-                        Text(destination.city + ", " + destination.country)
-                            .font(.headline)
-                        Text("Start Date: \(destination.startDate, formatter: dateFormatter)")
-                        Text("End Date: \(destination.endDate, formatter: dateFormatter)")
-                        Text("Travel days: \(daysBetween(startDate: destination.startDate, endDate: destination.endDate))")
-                        
+                    NavigationLink(destination: DestinationDetailView(destination: destination)) {
+                        VStack(alignment: .leading) {
+                            Text(destination.city + ", " + destination.country)
+                                .font(.headline)
+                            Text("Start Date: \(destination.startDate, formatter: dateFormatter)")
+                            Text("End Date: \(destination.endDate, formatter: dateFormatter)")
+                            Text("Travel days: \(daysBetween(startDate: destination.startDate, endDate: destination.endDate))")
+                        }
                     }
                     .swipeActions {
                         Button("Delete", systemImage: "trash", role: .destructive) {
