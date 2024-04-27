@@ -19,11 +19,7 @@ class OnBoardingViewTests: XCTestCase {
       set: { hasShownNewUser = $0 }
     )
 
-
     let _ = OnBoardingView(hasShownNewUserView: hasShownNewUserBinding)
-
-
-
 
     func testOnBoardingViewTextVisibility() {
 
@@ -33,10 +29,8 @@ class OnBoardingViewTests: XCTestCase {
         set: { hasShownNewUser = $0 }
       )
       let onBoardingView = OnBoardingView(hasShownNewUserView: hasShownNewUserBinding)
-
-
-
-      DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+      
+   DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
         XCTAssertTrue(onBoardingView.moveAirplane, "Text should be visible after animations complete.")
       }
     }
