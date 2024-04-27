@@ -88,8 +88,12 @@ struct MapKitView: View {
         print("No coordinates found for the specified city.")
       } else {
         //  CLLocationCoordinate2D(latitude: destinations.latitude, longitude: destinations.longitude)
+        for coordinate in coordinates {
+          let latitude = coordinate.latitude
+          let longitude = coordinate.longitude
+          print("Latitude: \(latitude), Longitude: \(longitude)")
+        }
 
-        print("Coordinates: \(coordinates)")
       }
     }
   }
