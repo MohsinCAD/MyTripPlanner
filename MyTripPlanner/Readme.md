@@ -25,4 +25,5 @@ App Functionality: App was used to get places of interest using a natural langua
 20. SwiftUI animation in the onboarding screen
 21. Several Text modifiers used. 
 22. Constants file was missed.
+23. API key was removed. The API_KEY can be retreived from pexels.com
 
