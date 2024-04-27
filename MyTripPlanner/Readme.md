@@ -17,5 +17,12 @@ App Functionality: App was used to get places of interest using a natural langua
 12. No blank screens.
 13. View components have separate views.
 14. No crashes or errors.
-15. SwiftLint: going to install it.
+15. SwiftLint: I have a few errors including Nesting, multiple_closures_with_trailing_closure, line_length : Total 14 violations, 0 serious in 19 files. I was unable to change nesting and trailing closures at this point.
+16. Test plan: I was only able to complete 25% in test coverage.
+17. The app has a custom made icon.
+18. An onboarding screen
+19. My Trip Planner is the name.
+20. SwiftUI animation in the onboarding screen
+21. Several Text modifiers used. 
+22. Constants file was missed.
 

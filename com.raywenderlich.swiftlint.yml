@@ -9,14 +9,18 @@ disabled_rules:
   - orphaned_doc_comment
   - todo
   - unused_capture_list
+  - attributes
+  - closure_end_indentation
+  - multiline_function_chains
+  - nesting
+  - redundant_type_annotation
 
 analyzer_rules:
   - unused_import
 
 opt_in_rules:
   - array_init
-  - attributes
-  - closure_end_indentation
+
   - closure_spacing
   - collection_alignment
   - colon # promote to error
@@ -35,7 +39,6 @@ opt_in_rules:
   - legacy_random
   - literal_expression_end_indentation
   - multiline_arguments
-  - multiline_function_chains
   - multiline_literal_brackets
   - multiline_parameters
   - multiline_parameters_brackets
@@ -44,7 +47,6 @@ opt_in_rules:
   - pattern_matching_keywords
   - prefer_self_type_over_type_of_self
   - redundant_nil_coalescing
-  - redundant_type_annotation
   - strict_fileprivate
   - toggle_bool
   - trailing_closure
