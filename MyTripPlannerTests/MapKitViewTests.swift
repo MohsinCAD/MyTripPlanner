@@ -10,32 +10,28 @@ import MapKit
 import SwiftUI
 
 class MapKitViewTests: XCTestCase {
+func testUpdateMapForCityWithValidCity() {
+  let mapKitView = MapKitView()
+  let mapView = MKMapView()
+  let expectation = self.expectation(description: "Geocode expectation")
 
+    mapKitView.geocodeAndSetMap(for: "San Francisco", in: mapView) { coordinates in
+      XCTAssertFalse(coordinates.isEmpty, "Coordinates should be found for San Francisco")
+      expectation.fulfill()
+    }
 
-    func testUpdateMapForCityWithValidCity() {
-        let mapKitView = MapKitView(destinations: .constant([Destination(city: "San Francisco", country: "USA", startDate: Date(), endDate: Date() )]))
-        let mapView = MKMapView()
-        let expectation = self.expectation(description: "Geocode expectation")
-
-        mapKitView.geocodeAndSetMap(for: "San Francisco", in: mapView) { coordinates in
-            XCTAssertFalse(coordinates.isEmpty, "Coordinates should be found for San Francisco")
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 5.0)
+    wait(for: [expectation], timeout: 5.0)
     }
 
     func testUpdateMapForCityWithInvalidCity() {
-        let mapKitView = MapKitView(destinations: .constant([Destination(city: "Los Angeles", country: "USA", startDate: Date(), endDate: Date() )]))
-        let mapView = MKMapView()
-        let expectation = self.expectation(description: "Geocode expectation")
+    let mapKitView = MapKitView()
+    let mapView = MKMapView()
+    let expectation = self.expectation(description: "Geocode expectation")
+      mapKitView.geocodeAndSetMap(for: "Unknown City", in: mapView) { coordinates in
+        XCTAssertTrue(coordinates.isEmpty, "No coordinates should be found for an unknown city")
+          expectation.fulfill()
+      }
 
-        mapKitView.geocodeAndSetMap(for: "Unknown City", in: mapView) { coordinates in
-            XCTAssertTrue(coordinates.isEmpty, "No coordinates should be found for an unknown city")
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 5.0)
+    wait(for: [expectation], timeout: 5.0)
     }
 }
-

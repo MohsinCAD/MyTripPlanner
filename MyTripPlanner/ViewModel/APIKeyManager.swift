@@ -12,12 +12,11 @@ enum APIKeyError: Error {
 }
 
 struct APIKeyManager {
-
   static var apiKey: String? {
     get {
       guard let filePath = Bundle.main.path(forResource: "APIConfig", ofType: "plist"),
-            let plist = NSDictionary(contentsOfFile: filePath),
-            let value = plist.object(forKey: "API_KEY") as? String else {
+        let plist = NSDictionary(contentsOfFile: filePath),
+        let value = plist.object(forKey: "API_KEY") as? String else {
         print("Couldn't find key 'API_KEY' in 'APIConfig.plist'.")
         return nil
       }

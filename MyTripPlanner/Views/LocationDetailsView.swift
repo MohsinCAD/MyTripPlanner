@@ -10,7 +10,8 @@ import MapKit
 import SwiftData
 
 struct LocationDetailsView: View {
-  @Environment(\.modelContext) private var context
+@Environment(\.modelContext)
+  private var context
   @State private var places: [Place] = []
   @Binding var mapSelection: MKMapItem?
   @Binding var show: Bool
@@ -30,7 +31,7 @@ struct LocationDetailsView: View {
             .foregroundStyle(.gray)
             .lineLimit(2)
             .padding(.trailing)
-            }
+        }
         Spacer()
 
         Button {
@@ -79,7 +80,7 @@ struct LocationDetailsView: View {
         }
         // .buttonStyle(PlainButtonStyle())
         Button {
-          let newPlace = Place(name: mapSelection?.placemark.name ?? "", title: mapSelection?.placemark.title ?? "", city: "Cupertino")
+        let newPlace = Place(name: mapSelection?.placemark.name ?? "", title: mapSelection?.placemark.title ?? "", city: "Cupertino")
           places.append(newPlace)
           context.insert(newPlace)
           showingAlert = true

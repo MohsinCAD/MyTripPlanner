@@ -43,5 +43,4 @@ struct ItineraryListView: View {
     let components = Calendar.current.dateComponents([.day], from: startDate, to: endDate)
     return components.day ?? 0
   }
-
 }

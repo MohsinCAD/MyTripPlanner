@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct DestinationDetailView: View {
-  @Environment(\.modelContext) private var context
+@Environment(\.modelContext)
+  private var context
   @Query var destinations: [Destination]
   @Query var places: [Place]
   @State private var imageUrl: URL?
@@ -38,7 +39,6 @@ struct DestinationDetailView: View {
           }
         }
       } else {
-
         Text("Loading Image...")
           .foregroundColor(.gray)
       }
@@ -47,7 +47,6 @@ struct DestinationDetailView: View {
       Text("Start Date: \(destination.startDate, formatter: dateFormatter)")
       Text("End Date: \(destination.endDate, formatter: dateFormatter)")
       Text("Travel days: \(daysBetween(startDate: destination.startDate, endDate: destination.endDate))")
-
       List {
         Text("Your Saved Places")
           .font(.largeTitle)
@@ -55,19 +54,15 @@ struct DestinationDetailView: View {
         if destination.city == "Cupertino" {
           ForEach(places, id: \.self) { place in
             Group {
-
               Text(place.name)
                 .font(.title3)
               Text("Address:  \(place.title)")
                 .font(.subheadline)
-
             }
           }
         }
       }
-
     }
-
     .padding()
     .navigationTitle("Destination Details")
     .onAppear {

@@ -34,7 +34,8 @@ class PexelsService {
       } else {
         completion(nil)
       }
-    }.resume()
+    }
+    .resume()
   }
 
   struct PexelsResponse: Codable {

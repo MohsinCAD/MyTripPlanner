@@ -10,11 +10,12 @@ import SwiftData
 import MapKit
 
 struct ContentView: View {
-  @Environment(\.modelContext) private var context
+@Environment(\.modelContext) 
+  private var context
   @State internal var city: String = ""
   @State internal var country: String = ""
-  @State internal var startDate: Date = Date()
-  @State internal var endDate: Date = Date()
+  @State internal var startDate = Date()
+  @State internal var endDate = Date()
   @State internal var destinations: [Destination] = []
   @State internal var showingAddDestination = false
   @State internal var showingLaunchScreen = true
@@ -39,8 +40,7 @@ struct ContentView: View {
         .tabItem {
           Label("List", systemImage: "list.bullet")
         }
-
-        MapKitView(destinations: $destinations)
+        MapKitView()
           .tabItem {
             Label("Map", systemImage: "map")
           }

@@ -3,8 +3,10 @@ import MapKit
 import SwiftData
 
 struct MapKitView: View {
-  @Environment(\.modelContext) private var context
-  @Binding var destinations: [Destination]
+@Environment(\.modelContext)
+private var context
+
+  @Query var destinations: [Destination]
   @State internal var cameraPosition: MapCameraPosition = .region(.userRegion)
   @State internal var searchText = ""
   @State internal var results = [MKMapItem]()
@@ -14,10 +16,26 @@ struct MapKitView: View {
   @State internal var routeDisplaying = false
   @State internal var route: MKRoute?
   @State internal var routeDestination: MKMapItem?
+  @State internal var location: CLLocationCoordinate2D?
+
+  func searchLocation() {
+    let geocoder = CLGeocoder()
+    geocoder.geocodeAddressString(destinations.last!.city) { placemarks, error in
+      if let error = error {
+        print("Error during geocoding: \(error.localizedDescription)")
+        } else if let location = placemarks?.first?.location?.coordinate {
+          self.location = location
+          print("Location: \(location.latitude) and \(location.longitude)")
+          LocationManager.shared.userLocation = .init(latitude: location.latitude, longitude: location.longitude)
+    }
+    }
+}
+
   var body: some View {
     ZStack {
       Map(position: $cameraPosition, selection: $mapSelection) {
-        Annotation("My location", coordinate: .userLocation) {
+      Annotation("Cupertino",
+                  coordinate: .init(latitude: location?.latitude ?? 37.3230, longitude: location?.longitude ?? -122.0322)) {
           ZStack {
             Circle()
               .frame(width: 32, height: 32)
@@ -29,7 +47,7 @@ struct MapKitView: View {
               .frame(width: 12, height: 12)
               .foregroundColor(.blue)
           }
-        }
+      }
         ForEach(results, id: \.self) { item in
           if item == routeDestination {
             let placemark = item.placemark
@@ -45,6 +63,7 @@ struct MapKitView: View {
         }
       }
       .onAppear {
+        searchLocation()
       }
       .overlay(alignment: .top) {
         TextField("Search for a location...", text: $searchText)
@@ -55,13 +74,13 @@ struct MapKitView: View {
           .shadow(radius: 10)
       }
       .onSubmit(of: .text) {
-        route = nil 
+        route = nil
         print("Search for location with query \(searchText)")
         Task { await searchPlaces() }
       }
-      .onChange(of: getDirections, { oldValue, newValue in
+      .onChange(of: getDirections, { _, newValue in
         if newValue {
-           fetchRoute()
+          fetchRoute()
         }
       })
       .onChange(of: mapSelection, { _, newValue in
@@ -80,26 +99,11 @@ struct MapKitView: View {
       }
     }
   }
-  func updateMapForCity() {
-    let mapView = MKMapView()
 
-    geocodeAndSetMap(for: destinations.first!.city, in: mapView) { coordinates in
-      if coordinates.isEmpty {
-        print("No coordinates found for the specified city.")
-      } else {
-        //  CLLocationCoordinate2D(latitude: destinations.latitude, longitude: destinations.longitude)
-        for coordinate in coordinates {
-          let latitude = coordinate.latitude
-          let longitude = coordinate.longitude
-          print("Latitude: \(latitude), Longitude: \(longitude)")
-        }
-
-      }
-    }
-  }
-  internal func geocodeAndSetMap(for city: String, in mapView: MKMapView, completion: @escaping ([CLLocationCoordinate2D]) -> Void) {
+internal func geocodeAndSetMap(for city: String, in mapView: MKMapView,
+              completion: @escaping ([CLLocationCoordinate2D]) -> Void) {
     let geocoder = CLGeocoder()
-    geocoder.geocodeAddressString(city) { (placemarks, error) in
+    geocoder.geocodeAddressString(city) { placemarks, error in
       var coordinates = [CLLocationCoordinate2D]()
 
       if let error = error {
@@ -126,7 +130,6 @@ extension MapKitView {
     let request = MKLocalSearch.Request()
     request.naturalLanguageQuery = searchText
     request.region = .userRegion
-
     let results = try? await MKLocalSearch(request: request).start()
     self.results = results?.mapItems ?? []
   }
@@ -148,18 +151,28 @@ extension MapKitView {
             cameraPosition = .rect(rect)
           }
         }
-
       }
     }
   }
-
-
 }
 
 extension CLLocationCoordinate2D {
   static var userLocation: CLLocationCoordinate2D {
-    return .init(latitude: 37.3230, longitude: -122.0322)
-  }
+    get {
+      return LocationManager.shared.userLocation
+    }
+    set {
+      LocationManager.shared.userLocation = newValue
+      }
+    }
+}
+
+class LocationManager {
+  static let shared = LocationManager()
+
+  var userLocation: CLLocationCoordinate2D = .init(latitude: 37.3230, longitude: -122.0322)
+
+    private init() {}
 }
 
 extension MKCoordinateRegion {
